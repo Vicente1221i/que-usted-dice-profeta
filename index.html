@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Vigilia en sábado Yeison?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+        
+        body {
+            font-family: 'Comic Neue', cursive, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background: linear-gradient(135deg, #ffcc33, #ff66ff, #33ccff);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: #ffffff;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .button-container {
+            margin-top: 40px;
+        }
+
+        #yes, #no {
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            border-radius: 50px;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            margin: 10px;
+            position: relative;
+        }
+
+        #yes {
+            background-color: #33cc33;
+            color: #ffffff;
+        }
+
+        #no {
+            background-color: #ff3333;
+            color: #ffffff;
+        }
+
+        #yes:hover {
+            transform: scale(1.2) rotate(10deg);
+            background-color: #28a745;
+            box-shadow: 0 0 20px #33cc33;
+        }
+
+        #no:hover {
+            transform: scale(1.2) rotate(-10deg);
+            background-color: #e60000;
+            box-shadow: 0 0 20px #ff3333;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+    </style>
+    <script>
+        function moveButton(button) {
+            button.classList.add("shake");
+            setTimeout(() => {
+                button.classList.remove("shake");
+                var x = Math.floor(Math.random() * (window.innerWidth - button.clientWidth));
+                var y = Math.floor(Math.random() * (window.innerHeight - button.clientHeight));
+                button.style.left = x + "px";
+                button.style.top = y + "px";
+            }, 500);
+        }
+
+        function noClicked() {
+            moveButton(document.getElementById("no"));
+        }
+
+        function yesClicked() {
+            document.body.innerHTML = "<h1>jajaja yo sabia que el profeta era un duro 🎉</h1>";
+            document.body.style.backgroundColor = "#4CAF50";
+            document.body.style.color = "#ffffff";
+        }
+    </script>
+</head>
+<body>
+    <h1>¿Vigilia en sábado Yeison?</h1>
+    <div class="button-container">
+        <button id="yes" onclick="yesClicked()">Sí</button>
+        <button id="no" onclick="noClicked()">No</button>
+    </div>
+</body>
+</html>
